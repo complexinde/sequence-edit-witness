@@ -1,0 +1,13 @@
+{
+  "finding": "Dot repository namespace accepted at register, violating exact commit-pinned locator promise; exact content SHA remained checked.",
+  "before_source_sha256": "04c86d1db5de6ea18dffda5dbe5d72e73744a889f749741b4cd913599bb3f451",
+  "after_source_sha256": "3b50713f2311cc23828da1b1911edd579c23e7770c01611498bec142c90c8259",
+  "scope": "Only source URL owner/repository/path segmentation; no changes to consensus, Merkle or edit algorithms.",
+  "genuine_red_log": "tdd-namespace-red.log",
+  "full_green_tests": 51,
+  "full_semantic_schema_passed": true,
+  "constructor_args": [],
+  "live_exploit_tested": false,
+  "review_status": "closed_after_fix",
+  "independent_review_evidence": "independent-review.json"
+}

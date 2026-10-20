@@ -1,0 +1,13 @@
+{
+  "purpose": "Regression sensitivity: actual contract REPLACE priority deliberately disabled; not a production version",
+  "changes": [
+    {
+      "from": "elif i<m and j<n and dp[i][j]==1+dp[i+1][j+1]:",
+      "to": "elif False and i<m and j<n and dp[i][j]==1+dp[i+1][j+1]:"
+    }
+  ],
+  "pytest_exit_code": 1,
+  "original_source_restored": true,
+  "restored_source_sha256": "04c86d1db5de6ea18dffda5dbe5d72e73744a889f749741b4cd913599bb3f451",
+  "harness_note": "First capture attempt decoded Windows subprocess output as UTF8 and failed; source restored in finally. This retained run captures exact bytes with PYTHONIOENCODING=utf-8; no contract or transport behavior replaced."
+}

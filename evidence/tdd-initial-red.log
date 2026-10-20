@@ -1,0 +1,684 @@
+WARNING: File `gltest.config.yaml` not found in the current directory, using default config, create a `gltest.config.yaml` file to manage multiple networks
+INFO: Using the following configuration:
+INFO:   RPC URL: http://127.0.0.1:4000/api
+INFO:   Selected Network: localnet
+INFO:   Available networks: ['localnet', 'studionet', 'testnet_asimov', 'testnet_bradbury']
+INFO:   Selected chain type: localnet
+INFO:   Available chains: localnet, studionet, testnet_asimov, testnet_bradbury
+INFO:   Contracts directory: contracts
+INFO:   Artifacts directory: artifacts
+INFO:   Environment: .env
+INFO:   Default wait interval: 3000 ms
+INFO:   Default wait retries: 50
+INFO:   Leader only mode: False
+FFFFFFFFFFFFFFFFFFFFFFFFFF                                               [100%]
+================================== FAILURES ===================================
+_____________ test_literal_script_complete_optimal_and_live_state _____________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF570040>
+
+    def test_literal_script_complete_optimal_and_live_state(direct_vm,direct_deploy):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);cert=c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF570040>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BD5C4E30>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_______ test_empty_newlines_unicode_and_multiple_optimum_ties[--0-ops0] _______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF71B9C0>
+left = b'', right = b'', cost = 0, ops = []
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF71B9C0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BD4CB230>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+______ test_empty_newlines_unicode_and_multiple_optimum_ties[-a-1-ops1] _______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF572980>
+left = b'', right = b'a', cost = 1, ops = ['INSERT']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF572980>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BF809F10>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+______ test_empty_newlines_unicode_and_multiple_optimum_ties[a--1-ops2] _______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF7C1440>
+left = b'a', right = b'', cost = 1, ops = ['DELETE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF7C1440>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BE0A2AE0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_____ test_empty_newlines_unicode_and_multiple_optimum_ties[a\n-a-1-ops3] _____
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF83AF20>
+left = b'a\n', right = b'a', cost = 1, ops = ['MATCH', 'DELETE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF83AF20>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BF682000>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+___ test_empty_newlines_unicode_and_multiple_optimum_ties[a\r\n-a\n-1-ops4] ___
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF8D45E0>
+left = b'a\r\n', right = b'a\n', cost = 1, ops = ['REPLACE', 'MATCH']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF8D45E0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BF9B7800>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_ test_empty_newlines_unicode_and_multiple_optimum_ties[\xce\xa9\n\xe9\x9b\xaa-\xce\xa9\n\xe9\x9b\xa8-1-ops5] _
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF9EB600>
+left = b'\xce\xa9\n\xe9\x9b\xaa', right = b'\xce\xa9\n\xe9\x9b\xa8', cost = 1
+ops = ['MATCH', 'REPLACE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF9EB600>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFA67B60>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+___ test_empty_newlines_unicode_and_multiple_optimum_ties[a\nb-b\na-2-ops6] ___
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BF9EB7E0>
+left = b'a\nb', right = b'b\na', cost = 2, ops = ['REPLACE', 'REPLACE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BF9EB7E0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BF9020F0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+____ test_empty_newlines_unicode_and_multiple_optimum_ties[a\na-a-1-ops7] _____
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFB20220>
+left = b'a\na', right = b'a', cost = 1, ops = ['MATCH', 'DELETE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFB20220>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFB5E540>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+____ test_empty_newlines_unicode_and_multiple_optimum_ties[a-a\na-1-ops8] _____
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFB22B60>
+left = b'a', right = b'a\na', cost = 1, ops = ['MATCH', 'INSERT']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('��\nѩ'.encode(),'��\n��'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFB22B60>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFBEFDA0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_______ test_independent_validator_rejects_complete_shape_forgery[cost] _______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFC5DD00>
+field = 'cost'
+
+    @pytest.mark.parametrize('field',['cost','script','source_lines','target_lines','binding'])
+    def test_independent_validator_rejects_complete_shape_forgery(direct_vm,direct_deploy,field):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);c.certify('edit',0);packet=copy.deepcopy(c.get_edit('edit')['attestation'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFC5DD00>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFC81C70>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+______ test_independent_validator_rejects_complete_shape_forgery[script] ______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFCEB100>
+field = 'script'
+
+    @pytest.mark.parametrize('field',['cost','script','source_lines','target_lines','binding'])
+    def test_independent_validator_rejects_complete_shape_forgery(direct_vm,direct_deploy,field):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);c.certify('edit',0);packet=copy.deepcopy(c.get_edit('edit')['attestation'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFCEB100>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFD59640>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+___ test_independent_validator_rejects_complete_shape_forgery[source_lines] ___
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFD905E0>
+field = 'source_lines'
+
+    @pytest.mark.parametrize('field',['cost','script','source_lines','target_lines','binding'])
+    def test_independent_validator_rejects_complete_shape_forgery(direct_vm,direct_deploy,field):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);c.certify('edit',0);packet=copy.deepcopy(c.get_edit('edit')['attestation'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFD905E0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFD82630>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+___ test_independent_validator_rejects_complete_shape_forgery[target_lines] ___
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFE11E40>
+field = 'target_lines'
+
+    @pytest.mark.parametrize('field',['cost','script','source_lines','target_lines','binding'])
+    def test_independent_validator_rejects_complete_shape_forgery(direct_vm,direct_deploy,field):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);c.certify('edit',0);packet=copy.deepcopy(c.get_edit('edit')['attestation'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFE11E40>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFE06F90>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_____ test_independent_validator_rejects_complete_shape_forgery[binding] ______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFEAFC40>
+field = 'binding'
+
+    @pytest.mark.parametrize('field',['cost','script','source_lines','target_lines','binding'])
+    def test_independent_validator_rejects_complete_shape_forgery(direct_vm,direct_deploy,field):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);c.certify('edit',0);packet=copy.deepcopy(c.get_edit('edit')['attestation'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFEAFC40>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFCF94F0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+____________________ test_validator_refetches_both_sources ____________________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFF4C9A0>
+
+    def test_validator_refetches_both_sources(direct_vm,direct_deploy):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c);c.certify('edit',0)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFF4C9A0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFF47B60>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+______ test_invalid_or_changed_source_stays_registered[left-unavailable] ______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170BFFE2660>
+kind = 'left-unavailable'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170BFFE2660>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFEE6FF0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_____ test_invalid_or_changed_source_stays_registered[right-unavailable] ______
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C0063D80>
+kind = 'right-unavailable'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C0063D80>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C00D6C00>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_________ test_invalid_or_changed_source_stays_registered[left-drift] _________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C0115080>
+kind = 'left-drift'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C0115080>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C014F1D0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+________ test_invalid_or_changed_source_stays_registered[right-drift] _________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C01A6660>
+kind = 'right-drift'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C01A6660>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170BFEC12B0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+________ test_invalid_or_changed_source_stays_registered[invalid-utf8] ________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C0254180>
+kind = 'invalid-utf8'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C0254180>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C024F530>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_________ test_invalid_or_changed_source_stays_registered[bytes-over] _________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C02C94E0>
+kind = 'bytes-over'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C02C94E0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C0301B20>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_________ test_invalid_or_changed_source_stays_registered[lines-over] _________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C0352D40>
+kind = 'lines-over'
+
+    @pytest.mark.parametrize('kind',['left-unavailable','right-unavailable','left-drift','right-drift','invalid-utf8','bytes-over','lines-over'])
+    def test_invalid_or_changed_source_stays_registered(direct_vm,direct_deploy,kind):
+>       c=deploy(direct_vm,direct_deploy);left=LEFT;right=RIGHT
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C0352D40>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C03C65D0>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+_________________ test_exact_upper_source_bounds_are_accepted _________________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C0418360>
+
+    def test_exact_upper_source_bounds_are_accepted(direct_vm,direct_deploy):
+>       c=deploy(direct_vm,direct_deploy);left=b'x'*8192;register(direct_vm,c,left,left);c.certify('edit',0)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C0418360>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C036FC20>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+____ test_permissionless_certification_owner_cas_terminal_and_pair_binding ____
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C0482020>
+
+    def test_permissionless_certification_owner_cas_terminal_and_pair_binding(direct_vm,direct_deploy):
+>       c=deploy(direct_vm,direct_deploy);other=create_address('other')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C0482020>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C0513E00>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+____________________ test_url_digest_and_lifetime_capacity ____________________
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x00000170C052B6A0>
+
+    def test_url_digest_and_lifetime_capacity(direct_vm,direct_deploy):
+>       c=deploy(direct_vm,direct_deploy)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+build = <function direct_deploy.<locals>._deploy at 0x00000170C052B6A0>
+
+    def deploy(vm,build):
+>       vm.warp('2026-10-21T00:00:00Z');c=build(str(ROOT/'sequence_edit_witness.py'),sdk_version='v0.2.12');assert hasattr(c,'register'),'SequenceEditWitness API not implemented';return c
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: SequenceEditWitness API not implemented
+E       assert False
+E        +  where False = hasattr(<CalldataProxy for <_contract_sequence_edit_witness.SequenceEditWitness object at 0x00000170C059D820>>, 'register')
+
+tests\test_contract.py:12: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_contract.py::test_literal_script_complete_optimal_and_live_state
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[--0-ops0]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[-a-1-ops1]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a--1-ops2]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a\n-a-1-ops3]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a\r\n-a\n-1-ops4]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[\xce\xa9\n\xe9\x9b\xaa-\xce\xa9\n\xe9\x9b\xa8-1-ops5]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a\nb-b\na-2-ops6]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a\na-a-1-ops7]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a-a\na-1-ops8]
+FAILED tests/test_contract.py::test_independent_validator_rejects_complete_shape_forgery[cost]
+FAILED tests/test_contract.py::test_independent_validator_rejects_complete_shape_forgery[script]
+FAILED tests/test_contract.py::test_independent_validator_rejects_complete_shape_forgery[source_lines]
+FAILED tests/test_contract.py::test_independent_validator_rejects_complete_shape_forgery[target_lines]
+FAILED tests/test_contract.py::test_independent_validator_rejects_complete_shape_forgery[binding]
+FAILED tests/test_contract.py::test_validator_refetches_both_sources - Assert...
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[left-unavailable]
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[right-unavailable]
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[left-drift]
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[right-drift]
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[invalid-utf8]
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[bytes-over]
+FAILED tests/test_contract.py::test_invalid_or_changed_source_stays_registered[lines-over]
+FAILED tests/test_contract.py::test_exact_upper_source_bounds_are_accepted - ...
+FAILED tests/test_contract.py::test_permissionless_certification_owner_cas_terminal_and_pair_binding
+FAILED tests/test_contract.py::test_url_digest_and_lifetime_capacity - Assert...
+26 failed in 3.27s

@@ -1,0 +1,11 @@
+{
+  "constructor_args": [],
+  "network": null,
+  "deployment": null,
+  "contract_address": null,
+  "transaction_hash": null,
+  "publication": null,
+  "live": null,
+  "live_consensus_tested": false,
+  "note": "Local-only prototype. No actual public fixture, deployment or live operation has been performed."
+}

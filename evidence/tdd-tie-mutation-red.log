@@ -1,0 +1,163 @@
+....FFF....F                                                             [100%]
+================================== FAILURES ===================================
+___ test_empty_newlines_unicode_and_multiple_optimum_ties[a\r\n-a\n-1-ops4] ___
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x000001F899927600>
+left = b'a\r\n', right = b'a\n', cost = 1, ops = ['REPLACE', 'MATCH']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('Ω\n雪'.encode(),'Ω\n雨'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT']),(b'a\nb\nc',b'b\nc\nd',2,['DELETE','MATCH','MATCH','INSERT']),(b'',b'\n',2,['INSERT','INSERT']),('\ufeffa\u2028b'.encode(),b'a',1,['REPLACE'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+                                                                           ^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\tooling\.venv\Lib\site-packages\gltest\direct\loader.py:432: in _wrapped
+    return attr(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:279: in certify
+    packet=_capture(d['left_url'],d['left_sha256'],d['right_url'],d['right_sha256'],binding)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:211: in _capture
+    return gl.vm.run_nondet_unsafe(leader,validator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\tooling\.venv\Lib\site-packages\gltest\direct\loader.py:161: in _direct_run_nondet_unsafe
+    result = leader_fn()
+             ^^^^^^^^^^^
+sequence_edit_witness.py:197: in leader
+    return {'binding':binding,'result':_derive(a,b,right_text)}
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:177: in _derive
+    _require(j<n and dp[i][j]==1+dp[i][j+1],'invalid optimum cursor')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ok = False, message = 'invalid optimum cursor'
+
+    def _require(ok: bool,message: str) -> None:
+    
+>       if not ok:raise gl.vm.UserError('[EXPECTED] '+message)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       genlayer.gl.vm.UserError: UserError(message='[EXPECTED] invalid optimum cursor')
+
+sequence_edit_witness.py:19: UserError
+_ test_empty_newlines_unicode_and_multiple_optimum_ties[\xce\xa9\n\xe9\x9b\xaa-\xce\xa9\n\xe9\x9b\xa8-1-ops5] _
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x000001F899A7B060>
+left = b'\xce\xa9\n\xe9\x9b\xaa', right = b'\xce\xa9\n\xe9\x9b\xa8', cost = 1
+ops = ['MATCH', 'REPLACE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('Ω\n雪'.encode(),'Ω\n雨'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT']),(b'a\nb\nc',b'b\nc\nd',2,['DELETE','MATCH','MATCH','INSERT']),(b'',b'\n',2,['INSERT','INSERT']),('\ufeffa\u2028b'.encode(),b'a',1,['REPLACE'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+                                                                           ^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\tooling\.venv\Lib\site-packages\gltest\direct\loader.py:432: in _wrapped
+    return attr(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:279: in certify
+    packet=_capture(d['left_url'],d['left_sha256'],d['right_url'],d['right_sha256'],binding)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:211: in _capture
+    return gl.vm.run_nondet_unsafe(leader,validator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\tooling\.venv\Lib\site-packages\gltest\direct\loader.py:161: in _direct_run_nondet_unsafe
+    result = leader_fn()
+             ^^^^^^^^^^^
+sequence_edit_witness.py:197: in leader
+    return {'binding':binding,'result':_derive(a,b,right_text)}
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:177: in _derive
+    _require(j<n and dp[i][j]==1+dp[i][j+1],'invalid optimum cursor')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ok = False, message = 'invalid optimum cursor'
+
+    def _require(ok: bool,message: str) -> None:
+    
+>       if not ok:raise gl.vm.UserError('[EXPECTED] '+message)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       genlayer.gl.vm.UserError: UserError(message='[EXPECTED] invalid optimum cursor')
+
+sequence_edit_witness.py:19: UserError
+___ test_empty_newlines_unicode_and_multiple_optimum_ties[a\nb-b\na-2-ops6] ___
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x000001F899C5BBA0>
+left = b'a\nb', right = b'b\na', cost = 2, ops = ['REPLACE', 'REPLACE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('Ω\n雪'.encode(),'Ω\n雨'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT']),(b'a\nb\nc',b'b\nc\nd',2,['DELETE','MATCH','MATCH','INSERT']),(b'',b'\n',2,['INSERT','INSERT']),('\ufeffa\u2028b'.encode(),b'a',1,['REPLACE'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+        c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+>       assert r['cost']==cost and [s['op'] for s in r['script']]==ops
+E       AssertionError: assert (2 == 2 and ['DELETE', 'MATCH', 'INSERT'] == ['REPLACE', 'REPLACE']
+E         
+E         At index 0 diff: 'DELETE' != 'REPLACE'
+E         Left contains one more item: 'INSERT'
+E         Use -v to get more diff)
+
+tests\test_contract.py:40: AssertionError
+_ test_empty_newlines_unicode_and_multiple_optimum_ties[\xef\xbb\xbfa\xe2\x80\xa8b-a-1-ops11] _
+
+direct_vm = VMContext(_sender=b'\xdc\x18\xaa=\xb8\xbc\x91\xa6\xe3\x90\xa3^}\x08\x11$o\xf3\xab\x01', _origin=None, _contract_addres...m_mocks_hit=set(), _live_web_handler=None, _live_llm_handler=None, _gl_call_hook=None, _traces=[], _trace_enabled=True)
+direct_deploy = <function direct_deploy.<locals>._deploy at 0x000001F899DBF420>
+left = b'\xef\xbb\xbfa\xe2\x80\xa8b', right = b'a', cost = 1, ops = ['REPLACE']
+
+    @pytest.mark.parametrize('left,right,cost,ops',[(b'',b'',0,[]),(b'',b'a',1,['INSERT']),(b'a',b'',1,['DELETE']),(b'a\n',b'a',1,['MATCH','DELETE']),(b'a\r\n',b'a\n',1,['REPLACE','MATCH']),('Ω\n雪'.encode(),'Ω\n雨'.encode(),1,['MATCH','REPLACE']),(b'a\nb',b'b\na',2,['REPLACE','REPLACE']),(b'a\na',b'a',1,['MATCH','DELETE']),(b'a',b'a\na',1,['MATCH','INSERT']),(b'a\nb\nc',b'b\nc\nd',2,['DELETE','MATCH','MATCH','INSERT']),(b'',b'\n',2,['INSERT','INSERT']),('\ufeffa\u2028b'.encode(),b'a',1,['REPLACE'])])
+    def test_empty_newlines_unicode_and_multiple_optimum_ties(direct_vm,direct_deploy,left,right,cost,ops):
+>       c=deploy(direct_vm,direct_deploy);register(direct_vm,c,left,right);c.certify('edit',0);r=c.get_edit('edit')['result']
+                                                                           ^^^^^^^^^^^^^^^^^^^
+
+tests\test_contract.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\tooling\.venv\Lib\site-packages\gltest\direct\loader.py:432: in _wrapped
+    return attr(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:279: in certify
+    packet=_capture(d['left_url'],d['left_sha256'],d['right_url'],d['right_sha256'],binding)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:211: in _capture
+    return gl.vm.run_nondet_unsafe(leader,validator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\tooling\.venv\Lib\site-packages\gltest\direct\loader.py:161: in _direct_run_nondet_unsafe
+    result = leader_fn()
+             ^^^^^^^^^^^
+sequence_edit_witness.py:197: in leader
+    return {'binding':binding,'result':_derive(a,b,right_text)}
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+sequence_edit_witness.py:177: in _derive
+    _require(j<n and dp[i][j]==1+dp[i][j+1],'invalid optimum cursor')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ok = False, message = 'invalid optimum cursor'
+
+    def _require(ok: bool,message: str) -> None:
+    
+>       if not ok:raise gl.vm.UserError('[EXPECTED] '+message)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       genlayer.gl.vm.UserError: UserError(message='[EXPECTED] invalid optimum cursor')
+
+sequence_edit_witness.py:19: UserError
+=========================== short test summary info ===========================
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a\r\n-a\n-1-ops4]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[\xce\xa9\n\xe9\x9b\xaa-\xce\xa9\n\xe9\x9b\xa8-1-ops5]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[a\nb-b\na-2-ops6]
+FAILED tests/test_contract.py::test_empty_newlines_unicode_and_multiple_optimum_ties[\xef\xbb\xbfa\xe2\x80\xa8b-a-1-ops11]
+4 failed, 8 passed, 17 deselected in 1.69s
+WARNING: File `gltest.config.yaml` not found in the current directory, using default config, create a `gltest.config.yaml` file to manage multiple networks
+INFO: Clearing artifacts directory: artifacts
+INFO: Using the following configuration:
+INFO:   RPC URL: http://127.0.0.1:4000/api
+INFO:   Selected Network: localnet
+INFO:   Available networks: ['localnet', 'studionet', 'testnet_asimov', 'testnet_bradbury']
+INFO:   Selected chain type: localnet
+INFO:   Available chains: localnet, studionet, testnet_asimov, testnet_bradbury
+INFO:   Contracts directory: contracts
+INFO:   Artifacts directory: artifacts
+INFO:   Environment: .env
+INFO:   Default wait interval: 3000 ms
+INFO:   Default wait retries: 50
+INFO:   Leader only mode: False

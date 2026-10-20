@@ -1,0 +1,58 @@
+{
+  "reviewer": "/root/genlayer_projects_pair02",
+  "reviewer_is_author": false,
+  "reviewed_at": "2026-10-20T21:30:32.565077+00:00",
+  "method": "Independent read-only core/design/README/tests/evidence review; one minimal actual SDK regression on original Artifact source, no repeated full suite",
+  "finding_id": "RAW-GITHUB-DOT-REPO-001",
+  "content_integrity_bypass": false,
+  "transport_normalization_note": "Input acceptance was actually reproduced. Interpretations after standard dot-segment URL normalization are an inference; no live adversarial GitHub repository or SDK transport attack was exercised. Exact expected SHA256 byte checks remained effective.",
+  "live_consensus_tested": false,
+  "deployment": null,
+  "files_written_by_reviewer": [
+    "evidence/independent-review.json"
+  ],
+  "remaining_important_findings": [],
+  "source": "sequence_edit_witness.py",
+  "source_sha256": "3b50713f2311cc23828da1b1911edd579c23e7770c01611498bec142c90c8259",
+  "status": "closed_after_fix",
+  "scope": [
+    "Both source namespace validators reject dot repository segments and preserve supported valid names",
+    "Both exact byte hashes; strict UTF8; empty=[]; LF split preserves CR/BOM/Unicode/trailing empties; exact reconstruction and limits",
+    "Suffix DP unit costs; canonical MATCH/REPLACE/DELETE/INSERT priorities; complete cursor/text/shape/cost/target replay",
+    "Independent fresh two-source hashes/full DP/script/replay and full canonical domain comparison",
+    "Owner CAS/exact certificate/one-shot certification and activation/offline irreversible revocation; lifetime/history caps",
+    "Documentation explicitly disclaims semantic equivalence, code correctness, safe patch execution and live evidence"
+  ],
+  "package_verification": {
+    "zip_sha256": "36e402f78b64fb8791bee4c06250d1ca053b3730f150c12f36bdbc375050956b",
+    "zip_path": "sequence-edit-witness-publish.zip",
+    "allowlist_entries_checked": 26,
+    "all_allowlist_hashes_match": true,
+    "payloads_verified": {},
+    "checked_before_review_file_added": true,
+    "repack_required_to_include_this_review": true
+  },
+  "verification_evidence": {
+    "sdk_version": "v0.2.12",
+    "whole_suite_passed_tests": 51,
+    "full_semantic_lint_and_schema_exit0": true,
+    "constructor_params": [],
+    "logs_read_not_rerun": true
+  },
+  "finding": {
+    "id": "RAW-GITHUB-DOT-REPO-001",
+    "status": "resolved_in_reviewed_source",
+    "original_source_sha256": "04c86d1db5de6ea18dffda5dbe5d72e73744a889f749741b4cd913599bb3f451",
+    "fixed_source_sha256": "3b50713f2311cc23828da1b1911edd579c23e7770c01611498bec142c90c8259",
+    "description": "Original regex accepted repository . or .. while only checking trailing file path segments. Dot-segment normalization could make the nominal 40-hex segment a repository and a file-path segment the actual ref; commit-locator or single-commit provenance assertion was not enforced.",
+    "resolution": "Parse owner/repository/commit/path separately; explicitly reject . and .. repository, retain exact commit/hash and safe file-path checks. Tests cover both repository dot forms and valid namespace boundaries.",
+    "actual_original_artifact_minimal_sdk_red": {
+      "expected": "register dot-repository URL reverts with commit-pinned error",
+      "observed": "AssertionError: Expected revert with message: commit-pinned, but call succeeded",
+      "result": "1 failed in 0.59s",
+      "test_function_in_memory_only": true
+    },
+    "author_red_green_evidence": "evidence/tdd-namespace-red.log and current evidence/verification-tests.log"
+  },
+  "prior_review_addendum": "Initial algorithm/state closeout did not detect shared locator gap. This addendum records and closes the later finding after actual author red/green namespace regressions."
+}
